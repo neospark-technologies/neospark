@@ -4,13 +4,14 @@ import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Preloader() {
+  const [isMounted, setIsMounted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [counter, setCounter] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // Only show preloader once per session
-    const hasLoaded = sessionStorage.getItem("ns_preloaded");
+    setIsMounted(true);
+    const hasLoaded = typeof window !== "undefined" ? sessionStorage.getItem("ns_preloaded") : null;
     if (hasLoaded) {
       setIsLoading(false);
       return;
@@ -22,14 +23,16 @@ export function Preloader() {
           if (intervalRef.current) clearInterval(intervalRef.current);
           return 100;
         }
-        const step = prev < 75 ? Math.floor(Math.random() * 8 + 3) : Math.floor(Math.random() * 4 + 1);
+        const step = prev < 75 ? Math.floor(Math.random() * 8 + 4) : Math.floor(Math.random() * 4 + 2);
         return Math.min(100, prev + step);
       });
     }, 40);
 
     const timeout = setTimeout(() => {
       setIsLoading(false);
-      sessionStorage.setItem("ns_preloaded", "true");
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("ns_preloaded", "true");
+      }
     }, 1800);
 
     return () => {
@@ -37,6 +40,8 @@ export function Preloader() {
       clearTimeout(timeout);
     };
   }, []);
+
+  if (!isMounted || !isLoading) return null;
 
   return (
     <AnimatePresence>
@@ -65,7 +70,7 @@ export function Preloader() {
             </div>
 
             <span className="font-mono text-xs uppercase tracking-widest text-[#7FA38A]">
-              Pokhara, Nepal
+              Pokhara, Nepal — Student Organization
             </span>
 
             <div className="font-mono text-sm tracking-wider text-[#A6A394] mt-4 tabular-nums">

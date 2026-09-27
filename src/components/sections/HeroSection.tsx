@@ -35,18 +35,32 @@ export function HeroSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 my-auto">
         <div className="max-w-4xl">
-          {/* Eyebrow badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#CFC8B8] bg-[#E7E0D2]/70 text-[#2F4A3A] mb-6 sm:mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-[#2F4A3A] animate-pulse" />
-            <span className="font-mono text-xs font-semibold tracking-wider uppercase">
-              Student-Run Technology Organization — Pokhara, Nepal
-            </span>
-          </motion.div>
+          {/* Eyebrow badge with floating animation */}
+          <div className="flex flex-wrap items-center gap-3 mb-6 sm:mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-[#CFC8B8] bg-[#E7E0D2]/70 text-[#2F4A3A]"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#2F4A3A] opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#2F4A3A]" />
+              </span>
+              <span className="font-mono text-xs font-semibold tracking-wider uppercase">
+                Student-Run Technology Organization — Pokhara, Nepal
+              </span>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [-3, 3, -3] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2F4A3A]/10 border border-[#2F4A3A]/20 text-[#2F4A3A] font-mono text-xs font-semibold"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2F4A3A]" />
+              <span>2x Collegiate Champions (IoT Fest & InnoHack)</span>
+            </motion.div>
+          </div>
 
           {/* Main Title with masked reveal */}
           <div className="overflow-hidden mb-6 sm:mb-8">

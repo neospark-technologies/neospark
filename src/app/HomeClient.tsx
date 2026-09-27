@@ -6,8 +6,10 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { KineticTicker } from "@/components/ui/KineticTicker";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
+import { VideoShowcaseSection } from "@/components/sections/VideoShowcaseSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { TimelineSection } from "@/components/sections/TimelineSection";
 import { GallerySection } from "@/components/sections/GallerySection";
@@ -39,11 +41,14 @@ export default function HomeClient() {
         <Header />
         <main>
           <HeroSection />
+          <KineticTicker theme="light" />
           <AboutSection />
           <ProjectsSection />
+          <VideoShowcaseSection />
           <AchievementsSection />
           <TimelineSection />
           <GallerySection />
+          <KineticTicker theme="dark" />
           <SupportersSection />
           <CTASection />
         </main>

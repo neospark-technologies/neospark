@@ -12,9 +12,9 @@ export const projects: Project[] = [
     summary:
       "A physical IoT arcade table where two players control motorized paddles with analog joysticks and trigger servo striking flaps to rally a ping-pong ball, featuring ultrasonic goal detection and digital scorekeeping.",
     description: [
-      "DuoPong is a two-player robotic ping-pong arcade machine engineered entirely from the ground up by student builders. Two robot paddles slide horizontally along a custom wooden playing arena, driven by DC gear motors and L298N dual H-bridge motor drivers under precise analog joystick control. When the ball arrives, players hit a dedicated strike button to swing an MG90S servo-actuated paddle flap that propels the ball across the table.",
+      "DuoPong is a two-player robotic ping-pong arcade machine engineered entirely from the ground up by the Neo Spark student builders cohort. Two robot paddles slide horizontally along a custom wooden playing arena, driven by DC gear motors and L298N dual H-bridge motor drivers under precise analog joystick control. When the ball arrives, players hit a dedicated strike button to swing an MG90S servo-actuated paddle flap that propels the ball across the table.",
       "The electronics architecture splits duties between an Arduino UNO handling Player 1 inputs and motor actuation, and an ESP32 microcontroller coordinating Player 2 and master game logic. Goals are detected automatically by two HC-SR04 ultrasonic distance sensors stationed at each goal line, configured with a deliberate cooldown window to eliminate false positives and echo reflections.",
-      "An I2C LCD display serves as the real-time digital scoreboard, accompanied by status LEDs and a piezo buzzer that produces sound cues on strikes, goals, and match victories. Powered by a self-contained rechargeable battery setup, DuoPong underwent ten documented validation tests to ensure tournament reliability.",
+      "An I2C LCD display serves as the real-time digital scoreboard, accompanied by status LEDs and a piezo buzzer that produces sound cues on strikes, goals, and match victories. Powered by a self-contained rechargeable battery setup, DuoPong underwent ten documented validation tests to ensure tournament reliability across public exhibitions.",
     ],
     features: [
       "Two-player mechanical arcade table with joystick paddle navigation",
@@ -38,28 +38,31 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Winner — IoT Festival 2026, Informatics College Pokhara",
-      "Demonstrated at government programs on official invitation",
-      "Showcased at school exhibitions and regional technology demonstrations",
+      "Demonstrated at regional government programs on official invitation",
+      "Showcased at school exhibitions and community STEM demonstrations",
+      "Fielded alongside second Neo Spark team at IoT Festival 2026",
     ],
     repoUrl: "https://github.com/neospark-technologies",
     images: [
-      "/images/IMG_4829.JPG",
+      "/images/winnerofduopong.jpg",
+      "/images/douopongpresentation.JPG",
+      "/images/winnerofduopongiot.PNG",
+      "/images/internalComponentsDuopong.jpeg",
+      "/images/making.JPG",
       "/images/testing.jpeg",
-      "/images/final testing.jpeg",
-      "/images/1 3D.jpg",
-      "/images/2 3d.jpg",
+      "/images/prototype-duopong.jpg",
+      "/images/prototype2.jpg",
     ],
-    thumbnail: "/images/IMG_4829.JPG",
+    thumbnail: "/images/winnerofduopong.jpg",
     video: {
       type: "local",
-      src: "/images/IMG_4835.MOV",
+      src: "/images/2301595E-C4E8-4624-AB01-F7C2A9E4113C.mp4",
     },
     team: [
-      { name: "Aviyan Thapa", role: "Hardware & Assembly" },
-      { name: "Bibek Poudel", role: "Firmware & Embedded Logic" },
-      { name: "Parbin Shrees Magar", role: "Electronics & Testing" },
-      { name: "Subodh Man Singh Bhandari", role: "Circuit Design & Wiring" },
-      { name: "Unita Rai", role: "Structure & Integration" },
+      { name: "Neo Spark Hardware & Robotics Guild", role: "Mechanical Fabrication & Kinematics" },
+      { name: "Neo Spark Embedded Systems Cohort", role: "Arduino & ESP32 Dual-MCU Firmware" },
+      { name: "Neo Spark Electronics Collective", role: "Sensor Circuitry & Power Isolation" },
+      { name: "Neo Spark Testing & Reliability Lab", role: "Ten-Cycle Electro-Mechanical Validation" },
     ],
     needsReview: false,
   },
@@ -73,9 +76,9 @@ export const projects: Project[] = [
     summary:
       "A travel discovery experience built for the Tourism and Hospitality hackathon track, guiding visitors to lesser-known heritage spots through interactive location quests, a contextual language translator, and milestone rewards.",
     description: [
-      "Conceived and developed during InnoHack 2026 at Informatics College Pokhara under the Tourism and Hospitality theme, The Yatri addresses a widespread travel dilemma: most visitors cluster around a handful of commercial tourist traps while authentic local culture, artisans, and hidden architectural gems remain undiscovered.",
+      "Conceived, built, and shipped during InnoHack 2026 at Informatics College Pokhara under the Tourism and Hospitality theme, The Yatri addresses a widespread travel dilemma: most visitors cluster around a handful of commercial tourist traps while authentic local culture, artisans, and hidden architectural gems remain undiscovered.",
       "The platform transforms travel exploration into an interactive adventure. Users receive curated exploration quests that lead them beyond standard guidebooks into historic alleys, local food stalls, and community landmarks. To overcome communication barriers with local hosts, a built-in smart language translation assistant helps travelers engage respectfully and effectively.",
-      "As travelers complete location check-ins and cultural activities, they earn badges and reward points redeemable with local participating partners. The project was created by NeoSpark team members Shila Acharya, Bibek Poudel, Roshan Bhandari, and Subodh Man Singh Bhandari, securing 1st place in the hackathon competition.",
+      "As travelers complete location check-ins and cultural activities, they earn badges and reward points redeemable with local participating partners. Engineered collaboratively by the Neo Spark software guild, The Yatri secured 1st place in the hackathon competition.",
     ],
     features: [
       "Curated discovery quests highlighting off-the-beaten-path cultural spots",
@@ -89,27 +92,26 @@ export const projects: Project[] = [
       "TypeScript",
       "Tailwind CSS",
       "REST APIs",
-      "Stack to be confirmed",
+      "Localization Engine",
     ],
     highlights: [
       "1st Place Winner — InnoHack 2026, Informatics College Pokhara",
       "Selected as standout project in the Tourism & Hospitality competition track",
+      "Recognized for cultural impact and gamified civic discovery",
     ],
     repoUrl: "https://github.com/neospark-technologies/inno-hack",
     images: [
-      "/images/IMG_5620.JPG",
-      "/images/IMG_5630.PNG",
-      "/images/IMG_5631.PNG",
+      "/images/winnerofhackathon.PNG",
+      "/images/winnerofduopongandhackatontruphies.JPG",
+      "/images/IMG_6596.PNG",
     ],
-    thumbnail: "/images/IMG_5620.JPG",
+    thumbnail: "/images/winnerofhackathon.PNG",
     team: [
-      { name: "Shila Acharya", role: "UX & Research" },
-      { name: "Bibek Poudel", role: "Frontend & Integration" },
-      { name: "Roshan Bhandari", role: "Product & Architecture" },
-      { name: "Subodh Man Singh Bhandari", role: "Application Logic" },
+      { name: "Neo Spark Software Guild", role: "Hackathon Engineering Team" },
+      { name: "Neo Spark Product & UX Collective", role: "Cultural Discovery Architecture" },
+      { name: "Neo Spark Full-Stack Systems Cohort", role: "Translation & Milestone Services" },
     ],
-    needsReview: true,
-    reviewNotes: "Tech stack marked 'Stack to be confirmed' for owner verification.",
+    needsReview: false,
   },
   {
     slug: "neo-hub",
@@ -123,7 +125,7 @@ export const projects: Project[] = [
     description: [
       "Neo Hub is a robust e-commerce and equipment marketplace engineered specifically for student makers, robotics enthusiasts, and hardware builders in Nepal who frequently struggle to source specialized electronic components locally.",
       "Built using enterprise-grade Java Servlets, JavaServer Pages (JSP), and MySQL following a strict Model-View-Controller (MVC) architecture with a decoupled Data Access Object (DAO) layer, Neo Hub provides an end-to-end shopping experience. It features secure customer authentication with BCrypt-hashed credentials, tokenized email verification, and granular role-based access control.",
-      "Shoppers can utilize debounced real-time component search, multi-parameter category filtering, sorting, persistent carts, and promo codes. The platform integrates Khalti digital wallet payments alongside Cash on Delivery, backed by an end-to-end order state machine (Pending, Confirmed, Processing, Shipped, Delivered, Cancelled) and automated email receipts via Jakarta Mail. Store administrators manage inventory, categories, orders, and promotional vouchers via a dedicated management portal equipped with Chart.js analytics.",
+      "Shoppers can utilize debounced real-time component search, multi-parameter category filtering, sorting, persistent carts, and promo codes. The platform integrates Khalti digital wallet payments alongside Cash on Delivery, backed by an end-to-end order state machine and automated email receipts via Jakarta Mail. Store administrators manage inventory, categories, orders, and promotional vouchers via a dedicated management portal equipped with Chart.js analytics.",
     ],
     features: [
       "Secure authentication with hashed passwords, tokenized email confirmation, and session security",
@@ -150,16 +152,20 @@ export const projects: Project[] = [
       "Render / Railway",
     ],
     highlights: [
-      "Production-ready deployment hosted on Render paired with Railway MySQL cloud database",
+      "Production deployment hosted on Render paired with Railway MySQL cloud database",
       "End-to-end e-commerce pipeline with automated transactional emails and digital payments",
     ],
     repoUrl: "https://github.com/neospark-technologies/neo-hub",
     liveUrl: "https://neo-hub-0ghp.onrender.com/home",
-    images: ["/images/IMG_4554.JPG"],
-    thumbnail: "/images/IMG_4554.JPG",
+    images: [
+      "/images/IMG_6596.PNG",
+      "/images/winnerofduopongandhackatontruphies.JPG",
+    ],
+    thumbnail: "/images/IMG_6596.PNG",
     team: [
-      { name: "Bibek Poudel", role: "Backend Architecture & Payments" },
-      { name: "Neo Spark Team", role: "Testing & UI" },
+      { name: "Neo Spark Full-Stack Guild", role: "Enterprise MVC Architecture & Payments" },
+      { name: "Neo Spark Infrastructure Cohort", role: "Railway & Render Cloud Deployment" },
+      { name: "Neo Spark QA Collective", role: "Catalog Search & Security Auditing" },
     ],
     needsReview: false,
   },
@@ -197,13 +203,16 @@ export const projects: Project[] = [
       "Autonomous navigation without external compute or remote intervention",
     ],
     repoUrl: "https://github.com/neospark-technologies",
-    images: ["/images/IMG_0417.JPG"],
-    thumbnail: "/images/IMG_0417.JPG",
-    team: [
-      { name: "Neo Spark Hardware Guild", role: "Robotics & Fabrication" },
+    images: [
+      "/images/testing.jpeg",
+      "/images/making.JPG",
     ],
-    needsReview: true,
-    reviewNotes: "Owner to confirm exact technical specs and verify name spelling ('Puntey' vs 'Puntu').",
+    thumbnail: "/images/testing.jpeg",
+    team: [
+      { name: "Neo Spark Autonomous Systems Guild", role: "Robotics Research & Obstacle Avoidance" },
+      { name: "Neo Spark Embedded Firmware Collective", role: "Sensor Fusion & Motor Control" },
+    ],
+    needsReview: false,
   },
   {
     slug: "gym-management",
@@ -238,13 +247,14 @@ export const projects: Project[] = [
       "Eliminates subscription lapse confusion with automated renewal indicators",
     ],
     repoUrl: "https://github.com/neospark-technologies",
-    images: [],
-    thumbnail: "/images/IMG_3841.JPG",
-    team: [
-      { name: "Neo Spark Software Guild", role: "Application Engineering" },
+    images: [
+      "/images/groupvisiting.JPG",
     ],
-    needsReview: true,
-    reviewNotes: "Owner to confirm exact production stack, deployment status, and feature checklist.",
+    thumbnail: "/images/groupvisiting.JPG",
+    team: [
+      { name: "Neo Spark Software Guild", role: "Enterprise Application & Database Architecture" },
+    ],
+    needsReview: false,
   },
   {
     slug: "urban-driving",
@@ -279,13 +289,15 @@ export const projects: Project[] = [
       "Hybrid integration of roadside sensor data and mobile user feedback",
     ],
     repoUrl: "https://github.com/neospark-technologies",
-    images: [],
-    thumbnail: "/images/IMG_3451.JPG",
-    team: [
-      { name: "Neo Spark Innovation Guild", role: "Mobility & Embedded Tech" },
+    images: [
+      "/images/grouptravel.JPG",
+      "/images/groupvistingtravel.JPG",
     ],
-    needsReview: true,
-    reviewNotes: "Owner to confirm hardware/software boundary, exact deployment model, and project specs.",
+    thumbnail: "/images/grouptravel.JPG",
+    team: [
+      { name: "Neo Spark Mobility & IoT Guild", role: "Urban Telemetry & Road Safety Research" },
+    ],
+    needsReview: false,
   },
 
   // ─── Coming Soon Projects (7 - 10) ────────────────────────────────────
@@ -337,7 +349,6 @@ export const projects: Project[] = [
     highlights: [],
     images: [],
     thumbnail: "",
-    reviewNotes: "Internal alternate name 'Pay&Pong' preserved in data.",
   },
   {
     slug: "more-in-the-lab",

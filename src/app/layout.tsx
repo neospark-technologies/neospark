@@ -62,10 +62,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/images/group-photo.jpg",
+        url: "/images/winnerofduopongandhackatontruphies.JPG",
         width: 1200,
         height: 630,
-        alt: "Neo Spark Technologies Builders Cohort",
+        alt: "Neo Spark Technologies Builders Cohort with Championship Trophies",
       },
     ],
   },
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Neo Spark Technologies",
     description: "Built by students. Trusted beyond the classroom.",
-    images: ["/images/group-photo.jpg"],
+    images: ["/images/winnerofduopongandhackatontruphies.JPG"],
   },
   icons: {
     icon: [
@@ -121,19 +121,63 @@ export default function RootLayout({
       className={`${inter.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} antialiased`}
     >
       <head>
-        {/* Prevent browser extensions (Bitdefender, ColorZilla, McAfee, etc.) from injecting DOM attributes that cause React hydration mismatches */}
+        {/* Neutralize browser extensions (Bitdefender, ColorZilla, etc.) injecting attributes before or during React hydration */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
-                if (typeof window !== 'undefined' && typeof Element !== 'undefined') {
-                  var origSetAttribute = Element.prototype.setAttribute;
-                  Element.prototype.setAttribute = function(name, val) {
-                    if (name === 'bis_skin_checked' || name === 'bis_register' || name === 'data-colorzilla') {
-                      return;
+                if (typeof window === 'undefined') return;
+                var badAttrs = ['bis_skin_checked', 'bis_register', 'data-colorzilla', 'bis_status'];
+                function isBad(name) {
+                  return badAttrs.indexOf(name) !== -1 || (name && name.indexOf('bis_') === 0);
+                }
+                function sanitizeNode(el) {
+                  if (!el || !el.removeAttribute) return;
+                  for (var i = 0; i < badAttrs.length; i++) {
+                    if (el.hasAttribute && el.hasAttribute(badAttrs[i])) {
+                      el.removeAttribute(badAttrs[i]);
                     }
-                    return origSetAttribute.apply(this, arguments);
+                  }
+                }
+                if (typeof Element !== 'undefined') {
+                  var origSet = Element.prototype.setAttribute;
+                  Element.prototype.setAttribute = function(name, val) {
+                    if (isBad(name)) return;
+                    return origSet.apply(this, arguments);
                   };
+                  var origSetNS = Element.prototype.setAttributeNS;
+                  if (origSetNS) {
+                    Element.prototype.setAttributeNS = function(ns, name, val) {
+                      if (isBad(name)) return;
+                      return origSetNS.apply(this, arguments);
+                    };
+                  }
+                  var origSetNode = Element.prototype.setAttributeNode;
+                  if (origSetNode) {
+                    Element.prototype.setAttributeNode = function(attr) {
+                      if (attr && isBad(attr.name)) return null;
+                      return origSetNode.apply(this, arguments);
+                    };
+                  }
+                }
+                if (typeof MutationObserver !== 'undefined' && typeof document !== 'undefined') {
+                  var observer = new MutationObserver(function(mutations) {
+                    for (var i = 0; i < mutations.length; i++) {
+                      var m = mutations[i];
+                      if (m.type === 'attributes' && isBad(m.attributeName)) {
+                        m.target.removeAttribute(m.attributeName);
+                      } else if (m.type === 'childList') {
+                        for (var j = 0; j < m.addedNodes.length; j++) {
+                          var node = m.addedNodes[j];
+                          if (node.nodeType === 1) {
+                            sanitizeNode(node);
+                          }
+                        }
+                      }
+                    }
+                  });
+                  var target = document.documentElement || document;
+                  observer.observe(target, { attributes: true, subtree: true, childList: true });
                 }
               })();
             `,

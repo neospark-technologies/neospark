@@ -85,21 +85,20 @@ export function AboutSection() {
           <div className="lg:col-span-6 space-y-6">
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-[#CFC8B8] bg-[#E7E0D2]">
               <Image
-                src="/images/IMG_6378.JPG"
-                alt="Neo Spark team members gathered with Pokhara mountain backdrop"
+                src="/images/winnerofduopongandhackatontruphies.JPG"
+                alt="Neo Spark student builders cohort holding both 1st place championship trophies"
                 fill
                 sizes="(max-width: 1024px) 100vw, 600px"
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12130F]/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#12130F]/70 via-[#12130F]/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="font-mono text-[10px] uppercase tracking-wider text-[#F3EFE7]/80">
-                  Pokhara, Nepal
+                <span className="font-mono text-[10px] uppercase tracking-wider text-[#7FA38A] block mb-1">
+                  Informatics College Pokhara — 2026
                 </span>
                 <p className="text-sm font-medium text-[#F3EFE7]">
-                  The cohort of student builders driving hardware and software
-                  initiatives.
+                  The collective cohort of student builders with both 1st Place championship trophies.
                 </p>
               </div>
             </div>
