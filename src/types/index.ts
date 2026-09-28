@@ -95,6 +95,7 @@ export interface GalleryImage {
   category: "team" | "event" | "workshop" | "project" | "trip";
   featured?: boolean;
   aspect?: "landscape" | "portrait" | "square";
+  span?: "wide" | "tall" | "compact" | "normal";
 }
 
 // ─── Timeline ─────────────────────────────────────────────────────────

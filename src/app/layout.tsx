@@ -127,9 +127,9 @@ export default function RootLayout({
             __html: `
               (function() {
                 if (typeof window === 'undefined') return;
-                var badAttrs = ['bis_skin_checked', 'bis_register', 'data-colorzilla', 'bis_status'];
+                var badAttrs = ['bis_skin_checked', 'bis_register', 'data-colorzilla', 'bis_status', 'bis_use'];
                 function isBad(name) {
-                  return badAttrs.indexOf(name) !== -1 || (name && name.indexOf('bis_') === 0);
+                  return badAttrs.indexOf(name) !== -1 || (name && name.indexOf('bis_') === 0) || (name && name.indexOf('data-dynamic-id') === 0);
                 }
                 function sanitizeNode(el) {
                   if (!el || !el.removeAttribute) return;
@@ -138,17 +138,22 @@ export default function RootLayout({
                       el.removeAttribute(badAttrs[i]);
                     }
                   }
+                  if (el.tagName === 'SCRIPT' && el.getAttribute('type') === 'application/ld+json') {
+                    if (el.hasAttribute('bis_use')) el.removeAttribute('bis_use');
+                  }
                 }
                 if (typeof Element !== 'undefined') {
                   var origSet = Element.prototype.setAttribute;
                   Element.prototype.setAttribute = function(name, val) {
                     if (isBad(name)) return;
+                    if (this.tagName === 'SCRIPT' && typeof val === 'string' && val.indexOf('chrome-extension://') === 0) return;
                     return origSet.apply(this, arguments);
                   };
                   var origSetNS = Element.prototype.setAttributeNS;
                   if (origSetNS) {
                     Element.prototype.setAttributeNS = function(ns, name, val) {
                       if (isBad(name)) return;
+                      if (this.tagName === 'SCRIPT' && typeof val === 'string' && val.indexOf('chrome-extension://') === 0) return;
                       return origSetNS.apply(this, arguments);
                     };
                   }
@@ -183,12 +188,17 @@ export default function RootLayout({
             `,
           }}
         />
+      </head>
+      <body suppressHydrationWarning>
+        {children}
+        {/* Valid JSON-LD structured data placed in body with suppressHydrationWarning to prevent extension tampering */}
         <script
+          id="schema-org-ldjson"
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body suppressHydrationWarning>{children}</body>
+      </body>
     </html>
   );
 }
