@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
@@ -23,9 +24,24 @@ const techDomains = [
 export function HeroSection() {
   return (
     <section className="relative min-h-[92vh] flex flex-col justify-between pt-32 pb-8 bg-[#F3EFE7] text-[#12130F] overflow-hidden">
+      {/* Background Hero Image - clear and visible with subtle opacity reduction */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0">
+        <Image
+          src="/images/mainimageallvisiting.JPG"
+          alt="Neo Spark collective cohort visiting technology program"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[center_25%] opacity-75 sm:opacity-85 transition-opacity duration-500"
+        />
+        {/* Soft, clear directional gradient protecting left-side text while leaving right side completely clear */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#F3EFE7]/90 via-[#F3EFE7]/55 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#F3EFE7]/50 via-transparent to-[#F3EFE7]/30" />
+      </div>
+
       {/* Background blueprint architectural accents */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.035]"
+        className="absolute inset-0 pointer-events-none opacity-[0.035] z-0"
         style={{
           backgroundImage:
             "linear-gradient(#12130F 1px, transparent 1px), linear-gradient(90deg, #12130F 1px, transparent 1px)",

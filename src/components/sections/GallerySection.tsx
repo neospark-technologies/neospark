@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Maximize2 } from "lucide-react";
 import { galleryImages } from "@/data/achievements";
 import { Lightbox } from "@/components/ui/Lightbox";
 import type { GalleryImage } from "@/types";
@@ -36,22 +37,26 @@ export function GallerySection() {
   return (
     <section
       id="gallery"
-      className="py-24 sm:py-32 bg-[#12130F] text-[#F3EFE7] hairline-t-dark"
+      className="py-24 sm:py-32 bg-[#12130F] text-[#F3EFE7] hairline-t-dark relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 -right-40 w-96 h-96 bg-[#2F4A3A]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 -left-40 w-96 h-96 bg-[#7FA38A]/10 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 hairline-b-dark gap-6">
           <div>
             <div className="section-header-tag text-[#7FA38A]">
               <span className="tag-dot" />
-              <span>05 / Archive</span>
+              <span>05 / Photographic Archive</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-display font-bold tracking-tight text-[#F3EFE7]">
               Moments that <span className="text-[#7FA38A]">shaped us.</span>
             </h2>
             <p className="mt-4 text-base sm:text-lg text-[#A6A394] max-w-xl font-sans">
-              From late night breadboard wiring to winning trophies and hiking
-              the hills of Pokhara.
+              From late night breadboard wiring to winning trophies and exploring
+              the hills of Pokhara — captured raw as a student engineering cohort.
             </p>
           </div>
 
@@ -63,7 +68,7 @@ export function GallerySection() {
                 <button
                   key={tab.value}
                   onClick={() => setActiveTab(tab.value)}
-                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-wide transition-colors ${
+                  className={`relative px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-colors ${
                     isActive
                       ? "text-[#12130F]"
                       : "text-[#A6A394] hover:text-[#F3EFE7]"
@@ -83,28 +88,30 @@ export function GallerySection() {
           </div>
         </div>
 
-        {/* Dynamic Bento / Masonry Gallery Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-        >
-          <AnimatePresence mode="popLayout">
+        {/* Dynamic Bento Mosaic Gallery Grid: varied widths, varied heights, zero gaps */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 auto-rows-[220px] sm:auto-rows-[240px] gap-4 sm:gap-5 grid-flow-dense"
+          >
             {filteredImages.map((img, idx) => {
-              const isFeatured = img.featured;
+              const span = img.span || (img.featured ? "wide" : "compact");
+              const spanClasses =
+                span === "wide"
+                  ? "col-span-1 sm:col-span-2 row-span-1" // takes more width
+                  : span === "tall"
+                  ? "col-span-1 row-span-2" // takes more height, low width
+                  : "col-span-1 row-span-1"; // takes low width, little height
 
               return (
-                <motion.div
+                <div
                   key={img.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.35, delay: idx * 0.04 }}
-                  className={`group relative overflow-hidden rounded-xl border border-[#2B2E27] bg-[#1C1E19] cursor-pointer ${
-                    isFeatured ? "sm:col-span-2 lg:col-span-2 aspect-[16/9]" : "aspect-[4/3]"
-                  }`}
-                  data-cursor="open"
                   onClick={() => openLightbox(idx)}
+                  className={`group relative w-full h-full rounded-2xl overflow-hidden border border-[#2B2E27] bg-[#161814] cursor-pointer shadow-md hover:border-[#7FA38A] transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl ${spanClasses}`}
                 >
                   <Image
                     src={img.src}
@@ -114,23 +121,30 @@ export function GallerySection() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
 
-                  {/* Editorial Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#12130F]/90 via-[#12130F]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Always subtle bottom gradient for legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#12130F]/90 via-[#12130F]/25 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
-                  {/* Caption & Category on Hover */}
-                  <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="font-mono text-[10px] uppercase tracking-wider text-[#7FA38A] block mb-1">
+                  {/* Top Badge: Category & Enlarge trigger */}
+                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                    <span className="px-2.5 py-1 rounded-md bg-[#12130F]/80 backdrop-blur-md border border-[#2B2E27] font-mono text-[10px] text-[#7FA38A] uppercase tracking-wider">
                       {img.category}
                     </span>
-                    <p className="font-sans text-sm font-medium text-[#F3EFE7] line-clamp-2">
+                    <div className="w-8 h-8 rounded-full bg-[#12130F]/80 backdrop-blur-md border border-[#2B2E27] flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Maximize2 className="w-3.5 h-3.5 text-[#F3EFE7]" />
+                    </div>
+                  </div>
+
+                  {/* Bottom Caption always readable */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+                    <p className="font-sans text-xs sm:text-sm font-medium text-[#F3EFE7] leading-snug line-clamp-2">
                       {img.caption || img.alt}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </AnimatePresence>
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
 
       {/* Lightbox Modal */}

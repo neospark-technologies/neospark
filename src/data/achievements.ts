@@ -52,6 +52,7 @@ export const galleryImages: GalleryImage[] = [
     category: "team",
     featured: true,
     aspect: "landscape",
+    span: "wide",
   },
   {
     id: "g2",
@@ -61,6 +62,7 @@ export const galleryImages: GalleryImage[] = [
     category: "team",
     featured: true,
     aspect: "landscape",
+    span: "wide",
   },
   {
     id: "g3",
@@ -70,6 +72,7 @@ export const galleryImages: GalleryImage[] = [
     category: "event",
     featured: true,
     aspect: "portrait",
+    span: "tall",
   },
   {
     id: "g4",
@@ -79,6 +82,7 @@ export const galleryImages: GalleryImage[] = [
     category: "event",
     featured: true,
     aspect: "portrait",
+    span: "tall",
   },
   {
     id: "g5",
@@ -88,6 +92,7 @@ export const galleryImages: GalleryImage[] = [
     category: "event",
     featured: true,
     aspect: "landscape",
+    span: "wide",
   },
   {
     id: "g6",
@@ -97,6 +102,7 @@ export const galleryImages: GalleryImage[] = [
     category: "project",
     featured: true,
     aspect: "portrait",
+    span: "tall",
   },
   {
     id: "g7",
@@ -105,6 +111,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Internal electromechanical assembly, wiring architecture, and driver calibration",
     category: "workshop",
     aspect: "landscape",
+    span: "compact",
   },
   {
     id: "g8",
@@ -113,6 +120,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Hardware lab fabrication and structural chassis construction",
     category: "workshop",
     aspect: "landscape",
+    span: "wide",
   },
   {
     id: "g9",
@@ -121,6 +129,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Bench testing ultrasonic sensors, debounce logic, and power isolation",
     category: "workshop",
     aspect: "landscape",
+    span: "compact",
   },
   {
     id: "g10",
@@ -129,6 +138,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Initial functional prototype verifying paddle kinematics and strike mechanisms",
     category: "project",
     aspect: "square",
+    span: "compact",
   },
   {
     id: "g11",
@@ -137,6 +147,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Version 2 prototype refined for rapid continuous gameplay rally durability",
     category: "project",
     aspect: "square",
+    span: "compact",
   },
   {
     id: "g12",
@@ -145,6 +156,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Visiting academic institutions and STEM demonstration venues across Pokhara",
     category: "trip",
     aspect: "landscape",
+    span: "normal",
   },
   {
     id: "g13",
@@ -153,6 +165,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Team exploration and field research expedition in Pokhara",
     category: "trip",
     aspect: "landscape",
+    span: "normal",
   },
   {
     id: "g14",
@@ -161,6 +174,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Cohort exploring regional communities and testing deployment conditions",
     category: "trip",
     aspect: "landscape",
+    span: "wide",
   },
   {
     id: "g15",
@@ -169,6 +183,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Cohort team building and design review retreat",
     category: "trip",
     aspect: "landscape",
+    span: "compact",
   },
   {
     id: "g16",
@@ -177,6 +192,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "On the road to regional competitions and hardware exhibitions",
     category: "trip",
     aspect: "landscape",
+    span: "compact",
   },
   {
     id: "g17",
@@ -185,6 +201,7 @@ export const galleryImages: GalleryImage[] = [
     caption: "Digital systems architecture, analytics dashboard, and cloud deployment",
     category: "project",
     aspect: "landscape",
+    span: "normal",
   },
 ];
 
